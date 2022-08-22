@@ -117,6 +117,52 @@ public class Implementation {
                 size++;
             }
         }
+
+        public void removeLast(){
+            if(size==0){
+                System.out.println("Empty");
+            }
+            else if (size==1) {
+                head = tail = null;
+                size=0;
+            }
+            else {
+                Node temp = head;
+                for (int i=0; i<size-2; i++){
+                    temp = temp.next;
+                }
+
+                tail = temp;
+                temp.next = null;
+                size--;
+            }
+        }
+
+        private Node getNodeAt(int idx){
+            Node temp = head;
+            for (int i=0; i<idx; i++){
+                temp = temp.next;
+            }
+            return temp;
+        }
+        public void reverse(){
+            int li = 0;
+            int ri = size-1;
+
+            while(li<=ri){
+
+                Node left = getNodeAt(li);
+                Node right = getNodeAt(ri);
+
+                int temp = left.data;
+                left.data = right.data;
+                right.data = temp;
+
+                li++;
+                ri--;
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -136,6 +182,10 @@ public class Implementation {
         l1.removeFirst();
         l1.display();
         l1.addAt(2, 7);
+        l1.display();
+        l1.removeLast();
+        l1.display();
+        l1.reverse();
         l1.display();
     }
 }
