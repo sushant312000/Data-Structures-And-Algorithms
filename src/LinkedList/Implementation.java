@@ -163,6 +163,23 @@ public class Implementation {
             }
         }
 
+        public void removeAt(int idx){
+            if(idx < 0 || idx > size-1){
+                System.out.println("Invalid arguements");
+            } else if (idx==0) {
+                removeFirst();
+            } else if (idx==size) {
+                removeLast();
+            }else {
+                Node temp = head;
+                for (int i=0; i<idx-1; i++){
+                   temp = temp.next;
+                }
+                temp.next = temp.next.next;
+                size--;
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -186,6 +203,8 @@ public class Implementation {
         l1.removeLast();
         l1.display();
         l1.reverse();
+        l1.display();
+        l1.removeAt(2);
         l1.display();
     }
 }
